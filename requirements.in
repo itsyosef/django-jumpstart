@@ -1,0 +1,2 @@
+django
+celery[redis]==5.4.0

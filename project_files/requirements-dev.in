@@ -1,0 +1,11 @@
+-r requirements.in
+pytailwindcss
+djlint
+ipykernel
+asgiref
+nest_asyncio
+
+django-rename-app
+
+# NOTE: Move this out of dev if use in actual app
+pypdf2
