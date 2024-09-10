@@ -25,8 +25,9 @@ celery_destination="${project_name}/${project_name}/celery.py"
 sed "s/PROJECT_NAME/${project_name}/g" "$celery_file_template" > "$celery_destination"
 
 
-mkdir ${project_name}/secrets
-cp local.env ${project_name}/secrets/
+sops -d local.enc.env > local.env
+mkdir -p ${project_name}/secrets
+cp local.env ${project_name}/secrets
 
 cd ${project_name}/
 
@@ -55,3 +56,5 @@ cat "$settings_header" | cat - "$settings_file" > temp && mv temp "$settings_fil
 make python-requirements
 
 make migrate
+
+make createsuperuser
